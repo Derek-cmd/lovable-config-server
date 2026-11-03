@@ -8,6 +8,20 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: false
 
+  kafka:
+    bootstrap-servers: localhost:29092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      group-id: lovable-clone-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "com.projects.distributed_lovable.*"
+
+
 eureka:
   client:
     serviceUrl:
@@ -19,7 +33,7 @@ eureka:
     prefer-ip-address: true
     hostname: localhost
 
-jwt.secretKey: asdasfa09812osdf0iiqwiokcqw209184rikf
+jwt.secretKey: asfd9asfdaoijfalkjl23u4oi5jlkjf98790890890ugojvakglsdfjn8yuh
 
 app:
   frontend:
